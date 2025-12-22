@@ -1,0 +1,278 @@
+mysql> CREATE DATABASE aits;
+Query OK, 1 row affected (2.452 sec)
+
+mysql> use aits;
+Database changed
+mysql> CREATE TABLE STUDENT (
+    ->     StudentId VARCHAR(10) PRIMARY KEY,
+    ->     FirstName VARCHAR(25) NOT NULL,
+    ->     LastName VARCHAR(15) NOT NULL,
+    ->     DateOfBirth DATE NOT NULL,
+    ->     Gender VARCHAR(15) NOT NULL,
+    ->     Email VARCHAR(30) UNIQUE NOT NULL,
+    ->     Phone VARCHAR(10) NOT NULL
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' NOT NULL
+)' at line 8
+mysql>     CREATE TABLE STUDENT (
+    ->     StudentId VARCHAR(10) PRIMARY KEY,
+    ->     FirstName VARCHAR(25) NOT NULL,
+    ->     LastName VARCHAR(15) NOT NULL,
+    ->     DateOfBirth DATE NOT NULL,
+    ->     Gender VARCHAR(15) NOT NULL,
+    ->     Email VARCHAR(30) UNIQUE NOT NULL,
+    ->     Phone VARCHAR(10) NOT NULL
+    ->     );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' NOT NULL
+    )' at line 8
+mysql>     CREATE TABLE STUDENT (
+    ->     StudentId VARCHAR(10) PRIMARY KEY,
+    ->     FirstName VARCHAR(25) NOT NULL,
+    ->     LastName VARCHAR(15) NOT NULL,
+    ->     DateOfBirth DATE NOT NULL,
+    ->     Gender VARCHAR(15) NOT NULL,
+    ->     Email VARCHAR(30) UNIQUE NOT NULL,
+    ->     Phone VARCHAR(10) NOT NULL
+    ->     );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' NOT NULL
+    )' at line 8
+mysql>     CREATE TABLE student (
+    ->     StudentId VARCHAR(10) PRIMARY KEY,
+    ->     FirstName VARCHAR(25) NOT NULL,
+    ->     LastName VARCHAR(15) NOT NULL,
+    ->     DateOfBirth DATE NOT NULL,
+    ->     Gender VARCHAR(15) NOT NULL,
+    ->     Email VARCHAR(30) UNIQUE NOT NULL,
+    ->     Phone VARCHAR(10) NOT NULL
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' NOT NULL
+)' at line 8
+mysql> CREATE TABLE student(
+    -> studentID VARCHAR(10) PRIMARY KEY,
+    -> FirstName VARCHAR(25) NOT NULL,
+    -> LastName VARCHAR(15) NOT NULL,
+    -> DateOfBirth DateTime NOT NULL,
+    -> Gender VARCHAR(15) NOT NULL,
+    -> Email VARCHAR(30) UNIQUE NOT NULL,
+    -> Phone VARCHAR(10) NOT NULL
+    -> );
+Query OK, 0 rows affected (2.931 sec)
+
+mysql> DESC Student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| studentID   | varchar(10) | NO   | PRI | NULL    |       |
+| FirstName   | varchar(25) | NO   |     | NULL    |       |
+| LastName    | varchar(15) | NO   |     | NULL    |       |
+| DateOfBirth | datetime    | NO   |     | NULL    |       |
+| Gender      | varchar(15) | NO   |     | NULL    |       |
+| Email       | varchar(30) | NO   | UNI | NULL    |       |
+| Phone       | varchar(10) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (1.224 sec)
+
+mysql>   INSERT INTO student(studentId,FirstName,LastName,DateOfBirth,Gender,Email,Phone)
+    ->      VALUES(12,'sharath','Reddy','2005-03-29','M','sharathreddy367@gmail.com','6302000401'),
+    ->      VALUES(10,'sharath','Reddy','2005-06-29','M','sharathreddy@gmail.com','6489039883'),
+    ->      VALUES(12,'sharath','Kumar','2006-08-24','M','sharath435@gmail.com','6302000201'),
+    ->      VALUES(12,'Chaithu','K','2005-12-26','F','chaithu@gmail.com','7868564734');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VALUES(10,'sharath','Reddy','2005-06-29','M','sharathreddy@gmail.com','648903988' at line 3
+mysql> INSERT INTO student(studentId,FirstName,LastName,DateOfBirth,Gender,Email,Phone)
+    ->      VALUES(12,'sharath','Reddy','2005-03-29','M','sharathreddy367@gmail.com','6302000401'),
+    ->      (10,'sharath','Kumar','2006-08-24','M','sharath435@gmail.com','6302000201'),
+    ->      (19,'Chaithu','K','2005-12-26','F','chaithu@gmail.com','7868564734');
+Query OK, 3 rows affected (0.994 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM student;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 |
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu@gmail.com         | 7868564734 |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+
+3 rows in set (0.292 sec)
+
+mysql> Select FirstName,LastName From student;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| sharath   | Kumar    |
+| sharath   | Reddy    |
+| Chaithu   | K        |
++-----------+----------+
+3 rows in set (0.267 sec)
+
+mysql> Select Email From student;
++---------------------------+
+| Email                     |
++---------------------------+
+| chaithu@gmail.com         |
+| sharath435@gmail.com      |
+| sharathreddy367@gmail.com |
++---------------------------+
+3 rows in set (0.008 sec)
+
+mysql> Alter Table student
+    -> ADD address
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> Alter Table student
+    -> ADD address VarChar(50),
+    -> Modify FirstName VarChar(25) NOT NULL;
+Query OK, 0 rows affected (0.959 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| studentID   | varchar(10) | NO   | PRI | NULL    |       |
+| FirstName   | varchar(25) | NO   |     | NULL    |       |
+| LastName    | varchar(15) | NO   |     | NULL    |       |
+| DateOfBirth | datetime    | NO   |     | NULL    |       |
+| Gender      | varchar(15) | NO   |     | NULL    |       |
+| Email       | varchar(30) | NO   | UNI | NULL    |       |
+| Phone       | varchar(10) | NO   |     | NULL    |       |
+| address     | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.346 sec)
+
+mysql> SELECT * from student where studentid ='s111';
+Empty set (1.268 sec)
+
+mysql> SELECT * from student where studentid ='S111';
+Empty set (0.015 sec)
+
+mysql> SELECT * from student;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu@gmail.com         | 7868564734 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+3 rows in set (0.074 sec)
+
+mysql> SELECT * from student where studentid ='S111';
+Empty set (0.008 sec)
+
+mysql> SELECT * from student where studentid ='10';
++-----------+-----------+----------+---------------------+--------+----------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                | Phone      | address |
++-----------+-----------+----------+---------------------+--------+----------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com | 6302000201 | NULL    |
++-----------+-----------+----------+---------------------+--------+----------------------+------------+---------+
+1 row in set (0.061 sec)
+
+mysql> SELECT * from student order by FirstName;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu@gmail.com         | 7868564734 | NULL    |
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+3 rows in set (0.122 sec)
+
+mysql> SELECT * from student order by FirstName desc;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu@gmail.com         | 7868564734 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+3 rows in set (0.009 sec)
+
+mysql> SELECT * from student limit 2;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+2 rows in set (0.065 sec)
+
+mysql> update student set email = 'chaithu@gmail.com' where studentid = '19';
+Query OK, 0 rows affected (0.498 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> SELECT * from student;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu@gmail.com         | 7868564734 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+3 rows in set (0.007 sec)
+
+mysql> update student set email = 'chaithu1@gmail.com' where studentid = '19';
+Query OK, 1 row affected (0.401 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * from student;
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| studentID | FirstName | LastName | DateOfBirth         | Gender | Email                     | Phone      | address |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+| 10        | sharath   | Kumar    | 2006-08-24 00:00:00 | M      | sharath435@gmail.com      | 6302000201 | NULL    |
+| 12        | sharath   | Reddy    | 2005-03-29 00:00:00 | M      | sharathreddy367@gmail.com | 6302000401 | NULL    |
+| 19        | Chaithu   | K        | 2005-12-26 00:00:00 | F      | chaithu1@gmail.com        | 7868564734 | NULL    |
++-----------+-----------+----------+---------------------+--------+---------------------------+------------+---------+
+3 rows in set (0.009 sec)
+
+mysql>  commit;
+Query OK, 0 rows affected (0.065 sec)
+
+mysql> select sum(phone) from student;
++-------------+
+| sum(phone)  |
++-------------+
+| 20472565336 |
++-------------+
+1 row in set (0.141 sec)
+
+mysql> select sum(phone) as Total from student;
++-------------+
+| Total       |
++-------------+
+| 20472565336 |
++-------------+
+1 row in set (0.033 sec)
+
+mysql> select min(phone) from student;
++------------+
+| min(phone) |
++------------+
+| 6302000201 |
++------------+
+1 row in set (0.046 sec)
+
+mysql> select max(phone) from student;
++------------+
+| max(phone) |
++------------+
+| 7868564734 |
++------------+
+1 row in set (0.007 sec)
+
+mysql> select avg(phone) from student;
++-------------------+
+| avg(phone)        |
++-------------------+
+| 6824188445.333333 |
++-------------------+
+1 row in set (0.007 sec)
+
+mysql> select sum(phone) from student where gender = 'F';
++------------+
+| sum(phone) |
++------------+
+| 7868564734 |
++------------+
+1 row in set (0.042 sec)
+
+mysql>
